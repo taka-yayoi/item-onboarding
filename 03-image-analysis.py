@@ -61,7 +61,7 @@ image_paths = [x.real_path for x in image_paths if x.real_path]
 # COMMAND ----------
 
 # MAGIC %md
-# MAGIC 単一の画像がどのように見えるか確認してみましょう
+# MAGIC 単一の画像がどのように見えるか確認してみましょう。
 
 # COMMAND ----------
 

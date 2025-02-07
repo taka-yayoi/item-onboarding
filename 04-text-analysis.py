@@ -17,7 +17,7 @@
 # MAGIC %md
 # MAGIC ### ライブラリのインストール
 # MAGIC
-# MAGIC 必要なライブラリ、transformersとvllmをインストールします
+# MAGIC 必要なライブラリ、transformersとvllmをインストールします。
 
 # COMMAND ----------
 
@@ -95,7 +95,7 @@ onboarding_df = (
     .join(image_analysis_df, on="real_path", how="left")
 )
 
-# 指定された場所にパーケット形式で保存
+# 指定された場所にparquet形式で保存
 (
     onboarding_df
     .write
@@ -187,7 +187,7 @@ llm_actor = LLMActor.remote(model_path)
 # COMMAND ----------
 
 # MAGIC %md
-# MAGIC ### プロンプト技術
+# MAGIC ### プロンプトテクニック
 # MAGIC
 # MAGIC 私たちはLLAMA 3.1 8B instructモデルを使用しています。このモデルは、ベースモデルとは少し異なる特定の方法で呼び出されることを期待しています。この特別な方法では、プロンプトや指示を特別なトークンと事前設定された構造でフォーマットする必要があります。この構造では、システムプロンプトを受け取ることを期待しており、これはモデルに「あなたは役に立つアシスタントです」といったことを伝えます。指示についても同様です。これらのテキストは特別なトークンの前後に配置され、トークンは次のように見えます: `<|eot_id|>`。この技術に関する詳細は、[Metaのモデルドキュメント](https://github.com/meta-llama/llama-models/blob/main/models/llama3_1/prompt_format.md)を参照してください。
 # MAGIC
@@ -243,7 +243,7 @@ display(onboarding_ds.schema())
 # COMMAND ----------
 
 # MAGIC %md
-# MAGIC このデータセットから単一のレコードがどのように見えるかを確認しましょう
+# MAGIC このデータセットから単一のレコードがどのように見えるかを確認しましょう。
 
 # COMMAND ----------
 
@@ -351,11 +351,6 @@ print(color_prompt)
 result = ray.get(llm_actor.generate.remote(color_prompt, sampling_params))
 suggested_color = " ".join([o.text for o in result[0].outputs]).strip()
 print(suggested_color)
-
-# COMMAND ----------
-
-# MAGIC %md
-# MAGIC これは素晴らしい例です。サプライヤーが提供した色「ハンター」は実際の色ではありません。視覚モデルは実際の色が「緑」であることを確認し、テキストモデルもそれを決定します。
 
 # COMMAND ----------
 
@@ -708,9 +703,6 @@ class OnboardingLLM:
 
 # モデルパスを指定
 model_path = "/Volumes/takaakiyayoi_catalog/item_onboarding/models/llama-31-8b-instruct/"
-
-# モデルの重みを保存するフォルダを指定
-#model_weights_folder = "takaakiyayoi_catalog.review_summarisation.model_weights"
 
 # データを取得
 onboarding_ds = ray.data.read_parquet(onboarding_df_path)

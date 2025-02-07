@@ -15,9 +15,9 @@
 # MAGIC %md
 # MAGIC ### コンテナの準備
 # MAGIC
-# MAGIC ここでは、[Unity Catalog](https://docs.databricks.com/en/data-governance/unity-catalog/index.html)を活用して、カタログとしてのコンテナと、テーブルを保存するためのスキーマ（データベース）を作成します。
+# MAGIC ここでは、[Unity Catalog](https://docs.databricks.com/ja/data-governance/unity-catalog/index.html)を活用して、カタログとしてのコンテナと、テーブルを保存するためのスキーマ（データベース）を作成します。
 # MAGIC
-# MAGIC また、このスキーマ内にファイルを保存するための[ボリューム](https://docs.databricks.com/en/sql/language-manual/sql-ref-volumes.html)を作成します。ボリュームは、CSVや画像のような実際のファイルを保存するのに適したハードドライブのようなストレージ場所と考えることができます。
+# MAGIC また、このスキーマ内にファイルを保存するための[ボリューム](https://docs.databricks.com/ja/sql/language-manual/sql-ref-volumes.html)を作成します。ボリュームは、CSVや画像のような実際のファイルを保存するのに適したハードドライブのようなストレージ場所と考えることができます。
 
 # COMMAND ----------
 
@@ -428,4 +428,4 @@ sampled_image_meta_enriched_df = sample_df.join(image_meta_enriched_df, on="item
 
 # MAGIC %md
 # MAGIC
-# MAGIC これでデータ準備ノートブックが完了です。次のノートブックでは、サンプル化されたテーブルと、Volumeに保存した画像を使用して情報抽出を開始します。
+# MAGIC これでデータ準備ノートブックが完了です。次のノートブックでは、サンプリングされたテーブルと、Volumeに保存した画像を使用して情報抽出を開始します。
